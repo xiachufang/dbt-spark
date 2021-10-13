@@ -6,10 +6,12 @@
 
 ### Under the hood
 - Add `unique_field` to better understand adapter adoption in anonymous usage tracking ([#211](https://github.com/dbt-labs/dbt-spark/pull/211))
+- Add support for Apache Hudi (hudi file format) which supports incremental merge strategies: Issue ([#187](https://github.com/dbt-labs/dbt-spark/issues/187)) 
 
 ### Contributors
 - [@harryharanb](https://github.com/harryharanb) ([#207](https://github.com/dbt-labs/dbt-spark/pull/207))
 - [@SCouto](https://github.com/Scouto) ([#204](https://github.com/dbt-labs/dbt-spark/pull/204))
+- [@vingov](https://github.com/vingov) ([#210](https://github.com/dbt-labs/dbt-spark/pull/210))
 
 ## dbt-spark 0.21.0b2 (August 20, 2021)
 
