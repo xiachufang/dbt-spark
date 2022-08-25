@@ -31,7 +31,8 @@
   {%- set options = config.get('options') -%}
   {%- if config.get('file_format') == 'hudi' -%}
     {%- set unique_key = config.get('unique_key') -%}
-    {%- set expected_options_primarykey = unique_key|join(',') if unique_key is sequence else unique_key -%}
+    {%- set expected_options_primarykey = unique_key|join(',') if unique_key is sequence and (unique_key is not string and unique_key is not mapping) else unique_key -%}
+
     {%- if unique_key is not none and options is none -%}
       {%- set options = {'primaryKey': expected_options_primarykey} -%}
     {%- elif unique_key is not none and options is not none and 'primaryKey' not in options -%}
