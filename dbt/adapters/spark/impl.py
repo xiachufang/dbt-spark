@@ -300,10 +300,11 @@ class SparkAdapter(SQLAdapter):
         schemas,
         manifest,
     ) -> agate.Table:
-        if len(schemas) != 1:
-            dbt.exceptions.raise_compiler_error(
-                f"Expected only one schema in spark _get_one_catalog, found " f"{schemas}"
-            )
+        # support multiple databases in get_catalog
+        # if len(schemas) != 1:
+        #     dbt.exceptions.raise_compiler_error(
+        #         f"Expected only one schema in spark _get_one_catalog, found " f"{schemas}"
+        #     )
 
         database = information_schema.database
         schema = list(schemas)[0]
