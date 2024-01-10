@@ -355,10 +355,11 @@ class SparkAdapter(SQLAdapter):
         self, manifest: Manifest, selected_nodes: Optional[Set] = None
     ) -> Tuple[agate.Table, List[Exception]]:
         schema_map = self._get_catalog_schemas(manifest)
-        if len(schema_map) > 1:
-            raise dbt.exceptions.CompilationError(
-                f"Expected only one database in get_catalog, found " f"{list(schema_map)}"
-            )
+        # support multiple database
+        # if len(schema_map) > 1:
+        #     raise dbt.exceptions.CompilationError(
+        #         f"Expected only one database in get_catalog, found " f"{list(schema_map)}"
+        #     )
 
         with executor(self.config) as tpe:
             futures: List[Future[agate.Table]] = []
@@ -383,10 +384,11 @@ class SparkAdapter(SQLAdapter):
         schemas: Set[str],
         manifest: Manifest,
     ) -> agate.Table:
-        if len(schemas) != 1:
-            raise dbt.exceptions.CompilationError(
-                f"Expected only one schema in spark _get_one_catalog, found " f"{schemas}"
-            )
+        # support multiple schema
+        # if len(schemas) != 1:
+        #     raise dbt.exceptions.CompilationError(
+        #         f"Expected only one schema in spark _get_one_catalog, found " f"{schemas}"
+        #     )
 
         database = information_schema.database
         schema = list(schemas)[0]
